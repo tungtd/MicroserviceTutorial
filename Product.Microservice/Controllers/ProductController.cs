@@ -34,18 +34,18 @@ namespace Product.Microservice.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var student = await _context.Products.Where(a => a.Id == id).FirstOrDefaultAsync();
-            if (student == null) return NotFound();
-            return Ok(student);
+            var product = await _context.Products.Where(a => a.Id == id).FirstOrDefaultAsync();
+            if (product == null) return NotFound();
+            return Ok(product);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var student = await _context.Products.Where(a => a.Id == id).FirstOrDefaultAsync();
-            if (student == null) return NotFound();
-            _context.Products.Remove(student);
+            var product = await _context.Products.Where(a => a.Id == id).FirstOrDefaultAsync();
+            if (product == null) return NotFound();
+            _context.Products.Remove(product);
             await _context.SaveChanges();
-            return Ok(student.Id);
+            return Ok(product.Id);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Entities.Product productUpdate)
